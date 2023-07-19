@@ -22,6 +22,10 @@ function decrement() {
       <button class="button" @click="increment">+</button>
     </div>
     <p class="odd-or-even">This counter is: {{ counterStore.oddOrEven }}</p>
+    <form class="form">
+      <label for="counter">Edit Counter</label>
+      <input type="number" v-model="counterStore.count" id="counter" min="0" step="1">
+    </form>
   </div>
 </template>
 
@@ -59,5 +63,11 @@ function decrement() {
 .odd-or-even {
   margin-top: 1em;
   font-size: 1.25rem;
+}
+
+.form label {
+  display: block;
+  margin-top: 1em;
+  font-size: 1rem;
 }
 </style>
