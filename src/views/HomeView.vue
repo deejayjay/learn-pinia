@@ -1,34 +1,27 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { useCounterStore } from '@/stores/counter';
 
-const count = ref(0);
-
-const oddOrEven = computed(() => {
-  if (count.value === 0) return "neither even nor odd";
-  if (count.value % 2 === 0) return "even";
-  return "odd";
-});
+const counterStore = useCounterStore();
 
 function increment() {
-  count.value++;
+  counterStore.incrementCount();
 }
 
 function decrement() {
-  if (count.value === 0) return;
-  count.value--;
+  counterStore.decrementCount();
 }
 </script>
 
 <template>
   <div class="home">
     <h1 class="count">
-      {{ count }}
+      {{ counterStore.count }}
     </h1>
     <div class="buttons">
       <button class="button" @click="decrement">-</button>
       <button class="button" @click="increment">+</button>
     </div>
-    <p class="odd-or-even">This counter is: {{ oddOrEven }}</p>
+    <p class="odd-or-even">This counter is: {{ counterStore.oddOrEven }}</p>
   </div>
 </template>
 
